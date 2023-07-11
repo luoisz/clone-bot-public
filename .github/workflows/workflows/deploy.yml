@@ -1,0 +1,16 @@
+name: Build Docker 
+
+on: workflow_dispatch
+      
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@main
+    - name: Build & Push Image
+      run: |
+        echo "dckr_pat_E_7AM4AtE3IIZbzRUbty0quwmgc" | docker login -u drzawlinmg --password-stdin
+        docker image build -t drzawlinmg/cbnew .
+        docker push drzawlinmg/cbnew
